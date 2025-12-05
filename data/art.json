@@ -1,0 +1,36 @@
+{
+  "loves": [
+    {
+      "image": "images/art/loves/love-adam_fuss.jpg",
+      "url": "https://fraenkelgallery.com/exhibitions/adam-fuss-2",
+      "alt": "Photogram using a flashlight"
+    },
+    {
+      "image": "images/art/loves/love-almond_infinite_betweens.jpg",
+      "url": "https://greg.org/archive/2009/04/28/prayer-flag-abstraction-also-darren-almonds-grandmother-also.html",
+      "alt": "Multing prayer flags"
+    },
+    {
+      "image": "images/art/loves/love-casebere_yellow_hallway.jpg",
+      "url": "https://www.ignant.com/2019/05/31/james-caseberes-surreal-architectural-constructions-are-remarkably-true-to-life/",
+      "alt": "Starts as an architectural model"
+    }
+  ],
+  "crushes": [
+    {
+      "image": "images/art/crushes/crush-flavin_pink_out_of_a_corner.jpg",
+      "url": "https://mcachicago.org/Exhibitions/1968/Dan-Flavin-Pink-And-Gold",
+      "alt": "Show the machinery"
+    },
+    {
+      "image": "images/art/crushes/crush-pozanti-sculpture.jpg",
+      "url": "https://thealdrich.org/exhibitions/hayal-pozanti-deep-learning",
+      "alt": "hidden alphabet"
+    },
+    {
+      "image": "images/art/crushes/crush-sargent_Madame_X.jpg",
+      "url": "https://www.artsy.net/article/artsy-editorial-madame-scandalized-art",
+      "alt": "forever scandalous"
+    }
+  ]
+}
