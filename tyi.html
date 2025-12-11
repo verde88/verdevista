@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TYI – Verde Vista</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="page-header">
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <a href="index.html" class="header-logo">Verde Vista</a>
+    </header>
+
+    <!-- Main Content -->
+    <div class="page-container">
+        <!-- Left Zone -->
+        <div class="left-zone">
+            <h1 class="page-title">This Year I...</h1>
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="asked">Asked</button>
+                <button class="category-btn" data-category="learned">Learned</button>
+                <button class="category-btn" data-category="mused">Mused</button>
+            </div>
+        </div>
+
+        <!-- Right Zone -->
+        <div class="right-zone">
+            <div class="tyi-display">
+                <div class="tyi-card" id="tyiCard">
+                    <!-- Content will be loaded here -->
+                </div>
+
+                <div class="tyi-controls">
+                    <button class="tyi-btn" id="prevBtn">Prev</button>
+                    <button class="tyi-btn pause-btn" id="pauseBtn">
+                        <span id="pauseIcon">❚❚</span>
+                    </button>
+                    <button class="tyi-btn" id="nextBtn">Next</button>
+                </div>
+
+                <div class="tyi-dots" id="tyiDots">
+                    <!-- Dots will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+        <div class="close-menu" id="closeMenu">&times;</div>
+        <div class="menu-content">
+            <nav>
+                <a href="index.html">Verde Vista</a>
+                <a href="choice.html">Choice</a>
+                <a href="art.html">Art</a>
+                <a href="tyi.html" class="active">TYI</a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="js/tyi.js"></script>
+</body>
+</html>

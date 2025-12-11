@@ -1,0 +1,22 @@
+[
+  { "text": "Tyler Cowen", "type": "name", "url": "https://marginalrevolution.com/" },
+  { "text": "Noise: A Flaw in Human Judgment", "type": "book", "url": "https://www.goodreads.com/book/show/55339408-noise" },
+  { "text": "My Aim Is True", "type": "music", "url": "https://tidal.com/browse/album/1129258" },
+  { "text": "Dwarkesh Patel", "type": "name", "url": "https://www.dwarkesh.com/" },
+  { "text": "Sea People: The Puzzle of Polynesia", "type": "book", "url": "https://www.goodreads.com/book/show/40536236-sea-people" },
+  { "text": "Being There", "type": "music", "url": "https://tidal.com/browse/album/81346934" },
+  { "text": "Bill Simmons", "type": "name", "url": "https://www.theringer.com/creator/bill-simmons" },
+  { "text": "The Immortality Key", "type": "book", "url": "https://www.goodreads.com/book/show/51174256-the-immortality-key" },
+  { "text": "Cure for Pain", "type": "music", "url": "https://tidal.com/browse/album/326001" },
+  { "text": "Patrick Collison", "type": "name", "url": "https://patrickcollison.com/" },
+  { "text": "The Power Broker", "type": "book", "url": "https://www.goodreads.com/book/show/1111.The_Power_Broker" },
+  { "text": "The College Dropout", "type": "music", "url": "https://tidal.com/browse/album/92099357" },
+  { "text": "Jason Furman", "type": "name", "url": "https://www.hks.harvard.edu/faculty/jason-furman" },
+  { "text": "The Death of Artemio Cruz", "type": "book", "url": "https://www.goodreads.com/book/show/12764.The_Death_of_Artemio_Cruz" },
+  { "text": "Tourist", "type": "music", "url": "https://tidal.com/browse/album/15871621" },
+  { "text": "Andrej Karpathy", "type": "name", "url": "https://karpathy.ai/" },
+  { "text": "At the Gaslight Square 1961", "type": "music", "url": "https://tidal.com/album/165531028" },
+  { "text": "John Arnold", "type": "name", "url": "https://www.arnoldventures.org/" },
+  { "text": "Broken Boy Soldiers", "type": "music", "url": "https://tidal.com/album/172927159" },
+  { "text": "Ethan Mollick", "type": "name", "url": "https://www.oneusefulthing.org/" }
+]
