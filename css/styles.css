@@ -464,6 +464,7 @@ a:hover {
   font-size: 18px !important;
   line-height: 1.6 !important;
   color: #e8e4df !important;
+  width: 100% !important;
 }
 
 .gslide-description a {
