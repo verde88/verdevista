@@ -13,16 +13,40 @@ document.addEventListener('DOMContentLoaded', async function() {
     const tyiDots = document.getElementById('tyiDots');
 
     let tyiData = {};
+    let mobileItems = []; // Shuffled items for mobile
     let currentCategory = 'asked';
     let currentIndex = 0;
     let isPlaying = true;
     let autoplayInterval = null;
+
+    // Check if mobile viewport
+    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+    // Fisher-Yates shuffle
+    function shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
 
     // Load TYI data from JSON
     async function loadTyiData() {
         try {
             const response = await fetch('data/tyi.json');
             tyiData = await response.json();
+
+            if (isMobile()) {
+                // Combine and shuffle all items for mobile
+                mobileItems = shuffle([
+                    ...tyiData.asked.map(item => ({...item, category: 'Asked'})),
+                    ...tyiData.learned.map(item => ({...item, category: 'Learned'})),
+                    ...tyiData.mused.map(item => ({...item, category: 'Mused'}))
+                ]);
+            }
+
             displayItem();
             createDots();
             startAutoplay();
@@ -31,12 +55,27 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
+    // Get current items array based on mobile/desktop
+    function getCurrentItems() {
+        if (isMobile()) {
+            return mobileItems;
+        }
+        return tyiData[currentCategory] || [];
+    }
+
     // Display current item
     function displayItem() {
-        const items = tyiData[currentCategory] || [];
+        const items = getCurrentItems();
         if (items.length > 0) {
             const item = items[currentIndex];
-            tyiCard.textContent = item.text;
+
+            if (isMobile()) {
+                // Mobile: show category label above content
+                tyiCard.innerHTML = `<span class="tyi-category-label">${item.category}</span><span>${item.text}</span>`;
+            } else {
+                // Desktop: just the text
+                tyiCard.textContent = item.text;
+            }
         }
         updateDots();
     }
@@ -44,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Create progress dots
     function createDots() {
         tyiDots.innerHTML = '';
-        const items = tyiData[currentCategory] || [];
+        const items = getCurrentItems();
         items.forEach((_, index) => {
             const dot = document.createElement('span');
             dot.className = 'dot';
@@ -70,7 +109,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Navigate to previous item
     function prevItem() {
-        const items = tyiData[currentCategory] || [];
+        const items = getCurrentItems();
         currentIndex = (currentIndex - 1 + items.length) % items.length;
         displayItem();
         resetAutoplay();
@@ -78,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Navigate to next item
     function nextItem() {
-        const items = tyiData[currentCategory] || [];
+        const items = getCurrentItems();
         currentIndex = (currentIndex + 1) % items.length;
         displayItem();
         resetAutoplay();
@@ -134,7 +173,9 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Keyboard navigation
     document.addEventListener('keydown', function(e) {
-        if (!menuOverlay.classList.contains('active')) {
+        if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+            menuOverlay.classList.remove('active');
+        } else if (!menuOverlay.classList.contains('active')) {
             if (e.key === 'ArrowLeft') {
                 prevItem();
             } else if (e.key === 'ArrowRight') {
@@ -157,12 +198,6 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     menuOverlay.addEventListener('click', function(e) {
         if (e.target === menuOverlay) {
-            menuOverlay.classList.remove('active');
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
             menuOverlay.classList.remove('active');
         }
     });

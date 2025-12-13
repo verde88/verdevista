@@ -11,18 +11,70 @@ document.addEventListener('DOMContentLoaded', async function() {
     let currentCategory = 'loves';
     let lightbox = null;
 
+    // Check if mobile viewport
+    const isMobile = () => window.matchMedia('(max-width: 768px)').matches;
+
+    // Fisher-Yates shuffle
+    function shuffle(array) {
+        const arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
     // Load art data from JSON
     async function loadArtData() {
         try {
             const response = await fetch('data/art.json');
             artData = await response.json();
-            displayCategory(currentCategory);
+
+            if (isMobile()) {
+                displayMobileStream();
+            } else {
+                displayCategory(currentCategory);
+            }
         } catch (error) {
             console.error('Error loading art data:', error);
         }
     }
 
-    // Display images for a category
+    // Display shuffled stream for mobile
+    function displayMobileStream() {
+        masonryGrid.innerHTML = '';
+
+        // Combine all items with category labels
+        let allItems = [
+            ...artData.loves.map(item => ({...item, category: 'Love'})),
+            ...artData.crushes.map(item => ({...item, category: 'Crush'}))
+        ];
+
+        // Shuffle on every load
+        allItems = shuffle(allItems);
+
+        allItems.forEach(item => {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'masonry-item';
+
+            // Mobile lightbox description: link left, category right
+            const description = `<div class="lightbox-desc-row"><a href="${item.url}" target="_blank" rel="noopener" class="lightbox-desc-link">${item.alt}</a><span class="lightbox-category">${item.category}</span></div>`;
+
+            itemDiv.innerHTML = `
+                <a href="${item.image}"
+                   class="glightbox"
+                   data-gallery="gallery-mobile"
+                   data-description="${description.replace(/"/g, '&quot;')}">
+                    <img src="${item.image}" alt="${item.alt}" loading="lazy">
+                </a>
+            `;
+            masonryGrid.appendChild(itemDiv);
+        });
+
+        initLightbox();
+    }
+
+    // Display images for a category (desktop)
     function displayCategory(category) {
         masonryGrid.innerHTML = '';
         const items = artData[category] || [];
@@ -41,7 +93,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             masonryGrid.appendChild(itemDiv);
         });
 
-        // Initialize or refresh GLightbox
+        initLightbox();
+    }
+
+    // Initialize GLightbox
+    function initLightbox() {
         if (lightbox) {
             lightbox.destroy();
         }

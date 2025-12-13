@@ -304,50 +304,158 @@ a:hover {
 }
 
 @media (max-width: 768px) {
+  /* Page Layout */
   .page-container {
     flex-direction: column;
+    padding-top: 0;
   }
 
-  .left-zone,
+  .left-zone {
+    width: 100%;
+    position: static;
+    height: auto;
+    padding: 24px;
+    padding-top: 80px;
+  }
+
   .right-zone {
     width: 100%;
     position: static;
     height: auto;
+    padding: 24px;
+    padding-top: 0;
   }
 
+  /* Splash Page */
+  .splash-logo {
+    top: 32px;
+    left: 24px;
+    font-size: 18px;
+  }
+
+  .splash-image {
+    object-position: 5% 5%;
+  }
+
+  /* Header - hamburger only, no logo text */
+  .page-header {
+    padding: 0 24px;
+    background-color: transparent;
+    height: auto;
+    padding-top: 24px;
+  }
+
+  .header-logo {
+    display: none;
+  }
+
+  .hamburger {
+    margin-right: 0;
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 0;
+  }
+
+  .hamburger span {
+    width: 24px;
+  }
+
+  /* Menu Overlay */
+  .close-menu {
+    top: 24px;
+    right: 24px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Art Page - single column */
   .masonry-grid {
     column-count: 1;
   }
 
-  .splash-logo {
-    top: 24px;
-    left: 24px;
-    font-size: 20px;
+  /* Hide category buttons on mobile */
+  .category-buttons {
+    display: none;
   }
 
-  .page-header {
-    padding: 0 24px;
-  }
-
-  .close-menu {
-    top: 24px;
-    right: 24px;
-  }
-
+  /* TYI Carousel */
   .tyi-card {
     padding: 2rem;
     font-size: 1.2rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .tyi-category-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+  }
+
+  /* Choice Page - single column */
+  .choice-list {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .choice-column {
+    gap: 16px;
+  }
+
+  .choice-item {
+    font-size: 16px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Touch/Active States */
+@media (hover: none) and (pointer: coarse) {
+  a:active,
+  .category-btn:active,
+  .tyi-btn:active,
+  .hamburger:active,
+  .close-menu:active,
+  .masonry-item:active,
+  .choice-item:active {
+    opacity: 0.6;
   }
 }
 
 /* GLightbox Custom Styling */
-.gslide-image {
-  padding-top: 4rem !important;
+.gslide-inner-content {
+  display: flex !important;
+  flex-direction: column !important;
+  max-height: 100vh !important;
+  padding-top: 2rem !important;
+}
+
+.gslide-media {
+  flex: 1 1 auto !important;
+  max-height: none !important;
+}
+
+.gslide-image img {
+  max-height: calc(100vh - 120px) !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
 }
 
 .gslide-description {
   background: transparent !important;
-  padding: 2rem 0 !important;
+  padding: 0.75rem 2rem 2rem 2rem !important;
+  position: static !important;
+  flex: 0 0 auto !important;
 }
 
 .gdesc-inner {
@@ -418,4 +526,30 @@ a:hover {
 
 .choice-item:hover {
   opacity: 0.6;
+}
+
+/* Lightbox description layout for mobile */
+.lightbox-desc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  width: 100%;
+  gap: 1rem;
+}
+
+.lightbox-desc-link {
+  flex: 1;
+}
+
+.lightbox-category {
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Hide hamburger when lightbox is open */
+body.glightbox-open .hamburger {
+  display: none;
 }
