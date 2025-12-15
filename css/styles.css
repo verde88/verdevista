@@ -328,9 +328,9 @@ a:hover {
 
   /* Splash Page */
   .splash-logo {
-    top: 32px;
-    left: 24px;
-    font-size: 18px;
+    top: 48px;
+    left: 36px;
+    font-size: 22px;
   }
 
   .splash-image {
@@ -456,6 +456,8 @@ a:hover {
   padding: 0.75rem 2rem 2rem 2rem !important;
   position: static !important;
   flex: 0 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .gdesc-inner {
@@ -465,6 +467,7 @@ a:hover {
   line-height: 1.6 !important;
   color: #e8e4df !important;
   width: 100% !important;
+  display: block !important;
 }
 
 .gslide-description a {
