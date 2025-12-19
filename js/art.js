@@ -58,13 +58,13 @@ document.addEventListener('DOMContentLoaded', async function() {
             itemDiv.className = 'masonry-item';
 
             // Mobile lightbox description: link left, category right
-            const description = `<div class="lightbox-desc-row"><a href="${item.url}" target="_blank" rel="noopener" class="lightbox-desc-link">${item.alt}</a><span class="lightbox-category">${item.category}</span></div>`;
+            const description = `<div class='lightbox-desc-row'><span class='lightbox-desc-link'><a href='${item.url}' target='_blank' rel='noopener'>${item.alt}</a></span><span class='lightbox-category'>${item.category}</span></div>`;
 
             itemDiv.innerHTML = `
                 <a href="${item.image}"
                    class="glightbox"
                    data-gallery="gallery-mobile"
-                   data-description="${description.replace(/"/g, '&quot;')}">
+                   data-description="${description}">
                     <img src="${item.image}" alt="${item.alt}" loading="lazy">
                 </a>
             `;
@@ -104,7 +104,9 @@ document.addEventListener('DOMContentLoaded', async function() {
         lightbox = GLightbox({
             touchNavigation: true,
             loop: true,
-            autoplayVideos: false
+            autoplayVideos: false,
+            descPosition: 'bottom',
+            moreLength: 0
         });
     }
 

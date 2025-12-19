@@ -543,6 +543,16 @@ a:hover {
 
 .lightbox-desc-link {
   flex: 1;
+  text-align: left;
+}
+
+.lightbox-desc-link a {
+  color: #e8e4df !important;
+  text-decoration: none !important;
+}
+
+.lightbox-desc-link a:hover {
+  text-decoration: underline !important;
 }
 
 .lightbox-category {
